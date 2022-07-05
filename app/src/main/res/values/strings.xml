@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">ConversionCalculator</string>
+    <string-array name="conversion_values">
+        <item>distance</item>
+        <item>temperature</item>
+        <item>quantity</item>
+        <item>weight</item>
+    </string-array>
+    <string-array name="distance_conversion_values">
+        <item>in</item>
+        <item>cm</item>
+        <item>km</item>
+        <item>mi</item>
+    </string-array>
+    <string-array name="temperature_conversion_values">
+        <item>C</item>
+        <item>K</item>
+        <item>F</item>
+    </string-array>
+    <string-array name="weight_conversion_values">
+        <item>kg</item>
+        <item>lb</item>
+        <item>gm</item>
+        <item>oz</item>
+    </string-array>
+    <string-array name="quantity_conversion_values">
+        <item>L</item>
+        <item>cups</item>
+    </string-array>
 </resources>
