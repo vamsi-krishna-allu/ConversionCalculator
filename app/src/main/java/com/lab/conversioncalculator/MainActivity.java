@@ -1,5 +1,7 @@
 package com.lab.conversioncalculator;
 
+import static android.text.TextUtils.isEmpty;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -7,36 +9,38 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     
     private EditText editText;
     private TextView textView;
 
-    private static final String DISTANCE = "distance";
-    private static final String TEMPERATURE = "temperature";
-    private static final String WEIGHT = "weight";
-    private static final String QUANTITY = "quantity";
+    private static final String DISTANCE = "Distance";
+    private static final String TEMPERATURE = "Temperature";
+    private static final String WEIGHT = "Weight";
+    private static final String QUANTITY = "Quantity";
     
-    private static final String KILOMETER = "km";
-    private static final String MILES = "mi";
-    private static final String CENTIMETER = "cm";
-    private static final String INCH = "in";
+    private static final String KILOMETER = "Kilometers";
+    private static final String MILES = "Miles";
+    private static final String CENTIMETER = "Centimeters";
+    private static final String INCH = "Inches";
     
-    private static final String KILOGRAM = "kg";
-    private static final String LB = "lb";
-    private static final String GRAM = "gm";
-    private static final String OZ = "oz";
+    private static final String KILOGRAM = "Kilograms";
+    private static final String LB = "Pounds";
+    private static final String GRAM = "Grams";
+    private static final String OZ = "Ounces";
 
-    private static final String CENTIGRADE = "C";
-    private static final String FAHRENHEIT = "F";
-    private static final String KELVIN = "K";
+    private static final String CENTIGRADE = "Celsius";
+    private static final String FAHRENHEIT = "Fahrenheit";
+    private static final String KELVIN = "Kelvin";
     
-    private static final String LITRE = "L";
-    private static final String CUPS = "cups";
+    private static final String LITRE = "Liters";
+    private static final String CUPS = "Cups";
 
     private String inputConversionType = INCH;
     private String outputConversionType = INCH;
@@ -93,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         break;
                 }
-                editText.setText("0");
-                textView.setText("0");
+                editText.setText(null);
+                textView.setText(null);
             }
 
             @Override
@@ -105,6 +109,9 @@ public class MainActivity extends AppCompatActivity {
 
         updateSpinner2Listener();
         updateSpinner3Listener();
+
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(this::convertData);
     }
 
     private void updateSpinner3Listener() {
@@ -454,6 +461,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void convertData(View view) {
+        if(editText.getText() == null || isEmpty(editText.getText().toString())){
+            Toast toast = Toast.makeText(getApplicationContext(), "Enter Valid Value", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
         switch(selectedConversionType){
             case DISTANCE:
                 distanceConverter();

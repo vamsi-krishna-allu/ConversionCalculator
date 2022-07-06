@@ -17,16 +17,25 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="@string/select_conversion_type"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="100dp"
-                android:contentDescription="conversion types"
+                android:contentDescription="@string/conversion_types"
                 android:minHeight="48dp" />
 
             <EditText
@@ -34,18 +43,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:autofillHints="input value"
                 android:ems="10"
+                android:hint="@string/enter_value"
                 android:inputType="numberDecimal"
                 android:minHeight="48dp"
-                android:text="0"
-                android:textSize="48sp" />
+                android:textColorHint="#78909C"
+                android:textSize="48sp"
+                tools:ignore="DuplicateSpeakableTextCheck" />
 
             <Spinner
                 android:id="@+id/spinner2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="50dp"
-                android:contentDescription="default from type"
+                android:contentDescription="@string/default_from_type"
                 android:minHeight="48dp" />
 
             <TextView
@@ -53,7 +65,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="0"
+                android:hint="@string/output_value"
+                android:textColorHint="#78909C"
+                android:background="#EFC0C0"
                 android:textSize="48sp" />
 
             <Spinner
@@ -61,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="50dp"
-                android:contentDescription="default to type"
+                android:contentDescription="@string/default_to_type"
                 android:minHeight="48dp" />
 
             <Button
@@ -70,7 +84,7 @@
                 android:layout_height="60dp"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                android:text="Convert"
+                android:text="@string/convert"
                 android:textSize="24sp" />
         </LinearLayout>
     </ScrollView>
