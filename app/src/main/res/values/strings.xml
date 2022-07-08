@@ -1,3 +1,40 @@
 <resources>
-    <string name="app_name">ConversionCalculator</string>
+    <string name="app_name">Convert Data</string>
+    <string name="conversion_types">conversion types</string>
+    <string name="defaultInput">0</string>
+    <string name="default_from_type">default from type</string>
+    <string name="default_to_type">default to type</string>
+    <string name="default_output">0</string>
+    <string name="convert">Convert</string>
+    <string name="input_label">Enter Value:</string>
+    <string name="select_conversion_type">Select conversion type</string>
+    <string name="output_value">Output Value</string>
+    <string name="enter_value">Enter Value</string>
+    <string-array name="conversion_values">
+        <item>Distance</item>
+        <item>Temperature</item>
+        <item>Quantity</item>
+        <item>Weight</item>
+    </string-array>
+    <string-array name="distance_conversion_values">
+        <item>Inches</item>
+        <item>Centimeters</item>
+        <item>Kilometers</item>
+        <item>Miles</item>
+    </string-array>
+    <string-array name="temperature_conversion_values">
+        <item>Celsius</item>
+        <item>Kelvin</item>
+        <item>Fahrenheit</item>
+    </string-array>
+    <string-array name="weight_conversion_values">
+        <item>Kilograms</item>
+        <item>Pounds</item>
+        <item>Grams</item>
+        <item>Ounces</item>
+    </string-array>
+    <string-array name="quantity_conversion_values">
+        <item>Liters</item>
+        <item>Cups</item>
+    </string-array>
 </resources>
