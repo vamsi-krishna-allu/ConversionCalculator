@@ -17,8 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText editText;
-    private TextView textView;
+    private EditText inputEditText;
+    private TextView outputTextView;
 
     // constants for spinner related to type of conversion
     private static final String DISTANCE = "Distance";
@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(R.layout.spinner_layout);
         spinner.setAdapter(adapter);
 
-        editText = findViewById(R.id.editTextNumberDecimal);
-        textView = findViewById(R.id.textView);
+        inputEditText = findViewById(R.id.editTextNumberDecimal);
+        outputTextView = findViewById(R.id.outputTextView);
 
         updateSpinners(DISTANCE);
 
@@ -103,8 +103,8 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         break;
                 }
-                editText.setText(null);
-                textView.setText(null);
+                inputEditText.setText(null);
+                outputTextView.setText(null);
             }
 
             @Override
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         updateSpinnerInputUnitListener();
         updateSpinnerOutputUnitListener();
 
-        Button button = findViewById(R.id.button);
+        Button button = findViewById(R.id.convertButton);
         button.setOnClickListener(this::convertData);
     }
 
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
      * Adds listener for spinner related to output value unit
      */
     private void updateSpinnerOutputUnitListener() {
-        Spinner outputSpinnerUnit = findViewById(R.id.spinner3);
+        Spinner outputSpinnerUnit = findViewById(R.id.outputSpinner);
         outputSpinnerUnit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
      * Adds listener for spinner related to input value unit
      */
     private void updateSpinnerInputUnitListener() {
-        Spinner inputSpinnerUnit = findViewById(R.id.spinner2);
+        Spinner inputSpinnerUnit = findViewById(R.id.inputUnitSpinner);
         inputSpinnerUnit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
      * converts the values based on different quantity units such as LITER, CUPS
      */
     private void quantityConverter() {
-        Float valueToBeConverted = Float.parseFloat(editText.getText().toString());
+        Float valueToBeConverted = Float.parseFloat(inputEditText.getText().toString());
         String valueAfterConversion = "";
         if (inputConversionType.equals(LITRE)) {
             switch (outputConversionType) {
@@ -265,14 +265,14 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
-        textView.setText(valueAfterConversion);
+        outputTextView.setText(valueAfterConversion);
     }
 
     /**
      * converts the values based on different weight measurement units such as KILOGRAM, GRAM, OUNCE, POUNDS
      */
     private void weightConverter() {
-        Float valueToBeConverted = Float.parseFloat(editText.getText().toString());
+        Float valueToBeConverted = Float.parseFloat(inputEditText.getText().toString());
         String valueAfterConversion = "";
         switch (inputConversionType) {
             case KILOGRAM:
@@ -340,14 +340,14 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
         }
-        textView.setText(valueAfterConversion);
+        outputTextView.setText(valueAfterConversion);
     }
 
     /**
      * converts the values based on different temperature measurement units such as CELSIUS, FAHRENHEIT, KELVIN
      */
     private void temperatureConverter() {
-        Float valueToBeConverted = Float.parseFloat(editText.getText().toString());
+        Float valueToBeConverted = Float.parseFloat(inputEditText.getText().toString());
         String valueAfterConversion = "";
         switch (inputConversionType) {
             case CENTIGRADE:
@@ -390,14 +390,14 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
         }
-        textView.setText(valueAfterConversion);
+        outputTextView.setText(valueAfterConversion);
     }
 
     /**
      * converts the values based on different distance measurement units such as KILOMETER, INCH, CENTIMETER, MILES
      */
     private void distanceConverter() {
-        Float valueToBeConverted = Float.parseFloat(editText.getText().toString());
+        Float valueToBeConverted = Float.parseFloat(inputEditText.getText().toString());
         String valueAfterConversion = "";
         switch (inputConversionType) {
             case INCH:
@@ -465,7 +465,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
         }
-        textView.setText(valueAfterConversion);
+        outputTextView.setText(valueAfterConversion);
     }
 
 
@@ -475,8 +475,8 @@ public class MainActivity extends AppCompatActivity {
      * @param conversionType @NonNull
      */
     private void updateSpinners(String conversionType) {
-        Spinner inputSpinnerUnit = findViewById(R.id.spinner2);
-        Spinner outputSpinnerUnit = findViewById(R.id.spinner3);
+        Spinner inputSpinnerUnit = findViewById(R.id.inputUnitSpinner);
+        Spinner outputSpinnerUnit = findViewById(R.id.outputSpinner);
         ArrayAdapter<CharSequence> adapter = null;
         switch (conversionType) {
             case DISTANCE:
@@ -508,7 +508,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void convertData(View view) {
-        if (editText.getText() == null || isEmpty(editText.getText().toString())) {
+        if (inputEditText.getText() == null || isEmpty(inputEditText.getText().toString())) {
             Toast toast = Toast.makeText(getApplicationContext(), "Enter Valid Value", Toast.LENGTH_SHORT);
             toast.show();
             return;
